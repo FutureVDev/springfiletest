@@ -29,6 +29,10 @@ public class FileService {
         return getAllByUser(userRepository.findOneByUserName(userName));
     }
 
+    public File saveOrUpdate(File file) {
+        return fileRepository.save(file);
+    }
+
     public List<File> getAllByUser(User user){
         return fileRepository.findAllByUser(user);
     }

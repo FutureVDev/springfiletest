@@ -20,6 +20,12 @@ public class File {
     @Column(name = "signature")
     private String signature;
 
+    @Column(name = "name")
+    private String name;
+
+    public File() {
+    }
+
     @ManyToOne
     private User user;
 

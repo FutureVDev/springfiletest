@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8"/>
 
@@ -32,7 +33,42 @@
 <!--    </form>-->
 
 <!--    <br>-->
+<!--    <span th:each="file : ${files}"></span>-->
+        <tbody>
+        <tr th:each="product : ${files}">
+            <td th:text="${file.name}"/>
+            <td>
+                <img th:if="${product.images.size() > 0}" width="40" height="40" th:src="@{'/images/' + ${product.images[0].path}}" />
+            </td>
+            <td>
+                <a th:href="@{'/shop/product/' + ${product.vendorCode}}" th:text="${product.title}"></a>
+            </td>
+            <td th:text="${product.price}"/>
+            <td>
+                <a th:href="@{'/shop/cart/add/' + ${product.id}}" class="btn btn-primary">Добавить в корзину</a>
+            </td>
+        </tr>
+        </tbody>
+<!--    <div th:if="${message}">-->
+<!--        <h2 th:text="${message}"/>-->
+<!--    </div>-->
 
+    <div>
+        <form method="POST" enctype="multipart/form-data" action="/">
+            <table>
+                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+            </table>
+        </form>
+    </div>
+
+    <div>
+        <ul>
+            <li th:each="file : ${files}">
+                <a th:href="${file}" th:text="${file}" />
+            </li>
+        </ul>
+    </div>
 <!--    <h1 th:text="#{products.list}" />-->
 
 <!--    <table class="table table-hover">-->
