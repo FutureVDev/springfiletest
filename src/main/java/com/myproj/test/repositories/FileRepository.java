@@ -10,4 +10,5 @@ import java.util.List;
 public interface FileRepository extends PagingAndSortingRepository<File, Long> {
     List<File> findAllByUser(User user);
     File findBySignature(String signature);
+//    File findOneBySignature(String signature);
 }

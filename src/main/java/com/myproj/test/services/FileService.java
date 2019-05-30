@@ -33,6 +33,8 @@ public class FileService {
         return fileRepository.save(file);
     }
 
+    public File getOneBySignature(String signature){return fileRepository.findBySignature(signature);}
+
     public List<File> getAllByUser(User user){
         return fileRepository.findAllByUser(user);
     }

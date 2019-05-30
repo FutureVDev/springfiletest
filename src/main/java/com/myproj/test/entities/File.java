@@ -14,7 +14,7 @@ public class File {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "content")
+    @Column(name = "content", length = 10000)
     private byte[] content;
 
     @Column(name = "signature")
@@ -23,10 +23,13 @@ public class File {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "content_type")
+    private String contentType;
+
     public File() {
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
 }
